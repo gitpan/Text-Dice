@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use parent qw(Exporter);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 $VERSION = eval $VERSION;
 
 our @EXPORT = qw(coefficient);
@@ -31,6 +31,8 @@ sub coefficient {
         ++$pairs2->{$_} for @{$_[1]};
     }
     else { return }
+
+    return 0 unless $counts1 and $counts2;
 
     my ($smaller, $larger) = $counts1 > $counts2
         ? ($pairs2, $pairs1) : ($pairs1, $pairs2);
